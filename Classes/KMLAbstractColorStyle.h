@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KMLAbstractSubStyle.h"
+@import AppKit;
 
 /** This is an abstract element and cannot be used directly in a KML file. 
  It provides elements for specifying the color and color mode of extended style types. 
@@ -43,17 +44,17 @@
 
 
 /// ---------------------------------
-/// @name UIColor
+/// @name NSColor
 /// ---------------------------------
 
-/** Returns The UIColor from color string.
- @return UIColor.
+/** Returns The NSColor from color string.
+ @return NSColor.
  */
-- (UIColor *)UIColor;
+- (NSColor *)NSColor;
 
-/** Set UIColor to color string.
- @param color The UIColor.
+/** Set NSColor to color string.
+ @param color The NSColor.
  */
-- (void)setUIColor:(UIColor *)color;
+- (void)setNSColor:(NSColor *)color;
 
 @end

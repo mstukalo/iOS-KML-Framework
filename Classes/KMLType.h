@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 NextBusinessSystem Co., Ltd. All rights reserved.
 //
 
+@import Foundation;
+
+
 typedef enum KMLAltitudeMode {
     KMLAltitudeModeClampToGround = 0,
     KMLAltitudeModeRelativeToGround,

@@ -46,34 +46,34 @@
     _colorModeValue = [KMLType valueForColorMode:colorMode];
 }
 
-- (UIColor *)UIColor
+- (NSColor *)NSColor
 {
     if (self.color && self.color.length == 8) {
         // validate ffffffff fromat
         NSRange match = [self.color rangeOfString:@"^[0-9a-fA-F]{8}$" options:NSRegularExpressionSearch];
         if (match.location != NSNotFound) {
             uint hex = strtoul([self.color UTF8String], NULL, 16);		
-            return [UIColor colorWithRed:(CGFloat)(hex & 0xff) / 255.0f  
+            return [NSColor colorWithRed:(CGFloat)(hex & 0xff) / 255.0f
                                    green:(CGFloat)((hex>>8) & 0xff) / 255.0f  
                                     blue:(CGFloat)((hex>>16) & 0xff) / 255.0f  
                                    alpha:(CGFloat)((hex>>24) & 0xff) / 255.0f ];
         }
     }
     
-    return [UIColor whiteColor];
+    return [NSColor whiteColor];
 }
 
-- (void)setUIColor:(UIColor *)color
+- (void)setNSColor:(NSColor *)color
 {
     const CGFloat *components = CGColorGetComponents(color.CGColor);
-    int componentsCount = CGColorGetNumberOfComponents(color.CGColor);
+    unsigned long componentsCount = CGColorGetNumberOfComponents(color.CGColor);
     
     NSInteger red = (int)(components[0] * 0xff);
     NSInteger green = (int)(components[(componentsCount == 4 ? 1 : 0)] * 0xff);
     NSInteger blue = (int)(components[(componentsCount == 4 ? 2 : 0)] * 0xff);
     NSInteger alpha = (int)(components[(componentsCount == 4 ? 3 : 1)] * 0xff);
 
-    self.color = [NSString stringWithFormat:@"%02x%02x%02x%02x", alpha, blue, green, red];
+    self.color = [NSString stringWithFormat:@"%02lx%02lx%02lx%02lx", (long)alpha, (long)blue, (long)green, (long)red];
 }
 
 
